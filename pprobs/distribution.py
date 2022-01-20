@@ -89,7 +89,7 @@ class Continuous:
     def __init__(self, pdf, space):
         if not callable(pdf):
             raise Exception('pdf should be a function')
-        if space != list or len(space) != 2 or space[0] >= space[1]:
+        if type(space) != list or len(space) != 2 or space[0] >= space[1]:
             raise Exception('space should be a list like [a, b] which a < b')
         self.pdf = pdf
         self.left = space[0]
