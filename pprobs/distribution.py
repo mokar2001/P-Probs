@@ -13,7 +13,7 @@ class Joint:
             if discrete:
                 if not hasattr(space, '__iter__'):
                     raise Exception('domain should be [a, b] and a < b')
-                self.domains.append(set(space))
+                self.domains.append(sorted(list(set(space))))
             else:
                 if type(space) != list or len(space) != 2 or space[0] >= space[1]:
                     raise Exception('domain should be [a, b] and a < b')
@@ -26,6 +26,7 @@ class Joint:
                 spaces.append(domain)
             else:
                 spaces.append(np.linspace(domain[0], domain[1], 10 * force))
+        print(spaces[0], spaces[1])
         prob_matrix = [[self.prob(i, j) for j in spaces[1]] for i in spaces[0]]
         prob_table = pd.DataFrame(prob_matrix)
         prob_table.index = map(lambda x: f"X={x}", spaces[0])
@@ -44,10 +45,10 @@ class Joint:
                 return self.prob(x, y)
         else:
             if hasattr(x, '__iter__') and type(y) in [int, float]:
-                up, down = integrate.dblquad(self.prob, x[0], x[1], lambda val: y, lambda val: y + 0.0001)
+                up, down = integrate.dblquad(self.prob, x[0], x[1], lambda val: y, lambda val: y + 0.01)
                 return up - down
             elif hasattr(y, '__iter__') and type(x) in [int, float]:
-                up, down = integrate.dblquad(self.prob, x, x + 0.0001, lambda val: y[0], lambda val: y[1])
+                up, down = integrate.dblquad(self.prob, x, x + 0.01, lambda val: y[0], lambda val: y[1])
                 return up - down
             elif hasattr(x, '__iter__') and hasattr(y, '__iter__'):
                 up, down = integrate.dblquad(self.prob, x[0], x[1], lambda val: y[0], lambda val: y[1])
