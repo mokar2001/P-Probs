@@ -1,0 +1,11 @@
+MANIFEST.in
+README.txt
+setup.py
+pprobs/__init__.py
+pprobs/distribution.py
+pprobs/simulation.py
+pprobs.egg-info/PKG-INFO
+pprobs.egg-info/SOURCES.txt
+pprobs.egg-info/dependency_links.txt
+pprobs.egg-info/requires.txt
+pprobs.egg-info/top_level.txt
