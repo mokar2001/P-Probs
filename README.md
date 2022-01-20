@@ -1,14 +1,14 @@
 # Introduction
-This is a library for simulate probability theory problems specialy conditional probability. It is also useful to create custom single or joint distribution with specific PMF or PDF to get probability table and genearte data based on probability function.
+This is a library for simulating probability theory problems, especially conditional probability. It is also useful to create a custom single or joint distribution with a specific PMF or PDF to get a probability table and generate data based on a probability function.
 
 ## How to install?
 `pip install pprobs`
 
 ## Probability Simulator 
-It simulates probability theory problems specialy conditional probability.
+It simulates probability theory problems, especially conditional probability.
 
 ### Example 1
-We want to get some infromation by defining some events.
+We want to get some information by defining some events.
 
 - `P(A) = 0.3`
 - `P(B) = 0.2`
@@ -76,7 +76,7 @@ print(space.get_prob('GEN_DEF|POSITIVE')) # 0.0865
 ```
 
 ### Example 4
-Bob has an important meeting tomorrow and he has to reach office on time in morning. His general mode of transport is by car and on a regular day (no car trouble) the probability that he will reach on time is 0.3. The probability that he might have car trouble is 0.2. If the car runs into trouble he will have to take a train and only 2 trains out of the available 10 trains will get him to office on time.
+Bob has an important meeting tomorrow and he has to reach the office on time in the morning. His general mode of transport is by car and on a regular day (no car trouble) the probability that he will reach on time is 0.3. The probability that he might have car trouble is 0.2. If the car runs into trouble he will have to take a train and only 2 trains out of the available 10 trains will get him to the office on time.
 
 By [Hackerearth](https://www.hackerearth.com/practice/machine-learning/prerequisites-of-machine-learning/bayes-rules-conditional-probability-chain-rule/tutorial/)
 
@@ -100,10 +100,10 @@ print(prob) # 0.28
 ```
 
 ## Distribution Simulator 
-It is useful to create custom single or joint distribution with specific PMF or PDF to get probability table and genearte data based on probability function.
+It is useful to create a custom single or joint distribution with a specific PMF or PDF to get a probability table and generate data based on a probability function.
 
 ### Example 1
-Suppose that we have a discrete random varible with specific PMF. We want to genearte many data based on this variable. As you see in the second example 1 has the largest probability and duplicates more and 4 has the smallest probability and duplicates less. 
+Suppose that we have a discrete random variable with a specific PMF. We want to generate many data based on this variable. As you see in the second example 1 has the largest probability and duplicates more and 4 has the smallest probability and duplicates less. 
 
 ```python
 from pprobs.distribution import Discrete
@@ -127,7 +127,7 @@ print(dist.generate(15)) # [1, 2, 1, 1, 1, 4, 3, 1, 1, 3, 2, 4, 1, 2, 2]
 ```
 
 ### Example 2
-Suppose that we have a continuous random varible with specific PDF.
+Suppose that we have a continuous random variable with a specific PDF.
 
 ```python
 from pprobs.distribution import Continuous
@@ -144,7 +144,7 @@ print(dist.generate(15)) # [2.206896551724138, 4.103448275862069, ..., 5.6551724
 ```
 
 ### Example 3
-Suppose that we have a Continuous Joint varible with specific PDF.
+Suppose that we have a Continuous Joint variable with a specific PDF.
 
 ```python
 from pprobs.distribution import Joint
@@ -173,7 +173,7 @@ print(dist.get_prob(2.1, [1, 4])) # 0.206 is P(X=2.1, Y in [1, 4])
 ```
 
 ### Example 4
-Suppose that we have a Discrete Joint varible with specific PMF.
+Suppose that we have a Discrete Joint variable with a specific PMF.
 
 ```python
 from pprobs.distribution import Joint
@@ -202,6 +202,7 @@ print(dist.get_prob(2, range(6, 10))) # 0.272 is P(X=2)
 print(dist.get_prob(2, 6)) # 0.083 is P(X=2, Y=6)
 ```
 
-
+Thank you if giving a star me on Github.
+https://github.com/mokar2001
 
 
