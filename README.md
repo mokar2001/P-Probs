@@ -1,7 +1,7 @@
 # Introduction
-This is a library for simulating probability theory problems, especially conditional probability. It is also useful to create a custom single or joint distribution with a specific PMF or PDF to get a probability table and generate data based on a probability function.
+This library helps simulate probability problems, with a focus on conditional probability. You can also use it to create custom single or joint distributions, define your own PMF or PDF, and generate probability tables and sample data.
 
-## How to install?
+## Installation
 `pip install pprobs`
 
 ## Probability Simulator 
