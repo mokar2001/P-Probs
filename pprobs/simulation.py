@@ -158,3 +158,49 @@ class Simulator:
         """
         self._set_variable(var, value)
         return self
+
+
+def test_simulator():
+    sim = Simulator()
+    
+    # Test 1: Add simple events and check probabilities
+    sim.add_event('A', 0.6)
+    sim.add_event('B', 0.4)
+    
+    assert sim.get_prob('A') == 0.6, f"Expected 0.6 but got {sim.get_prob('A')}"
+    assert sim.get_prob('B') == 0.4, f"Expected 0.4 but got {sim.get_prob('B')}"
+    assert sim.get_prob('A!') == 0.4, f"Expected 0.4 but got {sim.get_prob('A!')}"
+    
+    # Test 2: Conditional probability P(A|B)
+    sim.add_event('A|B', 0.8)
+    assert sim.get_prob('A|B') == 0.8, f"Expected 0.8 but got {sim.get_prob('A|B')}"
+    
+    # Test 3: Complement of conditional probability P(B|A) with force enabled
+    sim.add_event('B|A', 0.5)
+    assert sim.get_prob('B|A') == 0.5, f"Expected 0.5 but got {sim.get_prob('B|A')}"
+    
+    # Test 4: Intersection P(A ∩ B) given independence (A and B independent)
+    sim.add_event('A^B', 0.32)  # Custom intersection
+    assert sim.get_prob('A^B') == 0.32, f"Expected 0.32 but got {sim.get_prob('A^B')}"
+    
+    # Test 5: Union probability P(A ∪ B)
+    sim.add_event('A+B', 0.68)  # Custom union probability
+    assert sim.get_prob('A+B') == 0.68, f"Expected 0.68 but got {sim.get_prob('A+B')}"
+    
+    # Test 6: Handling intersection calculation for independent events
+    sim = Simulator()
+    sim.add_event('C', 0.5)
+    sim.add_event('D', 0.3)
+    
+    # Independent events should multiply: P(C ∩ D) = P(C) * P(D) = 0.5 * 0.3 = 0.15
+    assert sim.get_prob('C^D') == 0.15, f"Expected 0.15 but got {sim.get_prob('C^D')}"
+    
+    # Test 7: Conditional Probability derived from joint probabilities
+    sim.add_event('E', 0.6)
+    sim.add_event('F', 0.2)
+    sim.add_event('E^F', 0.1)
+    
+    # Conditional probability: P(E|F) = P(E ∩ F) / P(F) = 0.1 / 0.2 = 0.5
+    assert sim.get_prob('E|F') == 0.5, f"Expected 0.5 but got {sim.get_prob('E|F')}"
+
+    print("All tests passed!")
